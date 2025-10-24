@@ -1,0 +1,9 @@
+world=/server/worlds/MyWorld.wld
+worldname=My Modded World
+maxplayers=8
+port=7777
+password=tucontraseña123
+motd=¡Bienvenidos al servidor moddeado!
+autocreate=3
+difficulty=3
+language=en-US
