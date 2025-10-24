@@ -18,7 +18,8 @@ WORKDIR $TMOD_DIR
 
 # Descargar y extraer el tModLoader.zip
 RUN wget https://github.com/tModLoader/tModLoader/releases/download/${TMOD_VERSION}/tModLoader.zip -O server.zip && \
-    unzip server.zip && rm server.zip
+    unzip server.zip && rm server.zip && \
+    chmod +x *.sh LaunchUtils/*.sh
 
 # Copiar tus mods y configs
 COPY . .
