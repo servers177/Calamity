@@ -1,6 +1,5 @@
 #!/bin/bash
-cd /config
-
-# Inicia el servidor con la config
-# (La imagen maneja la descarga de tModLoader y mods)
-tModLoaderServer -config serverconfig.txt
+echo "Iniciando servidor de tModLoader ${TMOD_VERSION}..."
+cd /tmodloader
+# Iniciar con la configuración del archivo serverconfig.txt
+./tModLoaderServer -config serverconfig.txt -steam

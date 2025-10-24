@@ -1,21 +1,33 @@
-# Imagen base fácil para tModLoader 1.4 con soporte para versiones específicas
-FROM jacobsmile/tmodloader1.4:v2025.08.3.1
+# Imagen base con .NET Runtime y utilidades
+FROM debian:bookworm-slim
 
-# Crea directorios para mundos y configs
-RUN mkdir -p /config/worlds /config/mods
+# Variables
+ENV TMOD_VERSION=2025.08.3.1
+ENV TMOD_DIR=/tmodloader
+ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=false
 
-# Copia tu config del servidor
-COPY serverconfig.txt /config/serverconfig.txt
+# Instalar dependencias
+RUN apt-get update && apt-get install -y \
+    wget unzip libicu-dev libssl3 locales && \
+    locale-gen en_US.UTF-8 && \
+    rm -rf /var/lib/apt/lists/*
 
-# Copia mundo (si lo tienes)
-COPY worlds/ /config/worlds/
+# Crear carpeta y descargar el server
+RUN mkdir -p $TMOD_DIR
+WORKDIR $TMOD_DIR
 
-# Copia script de inicio
-COPY start.sh /start.sh
-RUN chmod +x /start.sh
+# Descargar el servidor de tModLoader desde SteamCMD CDN (usa la versión estable del branch 2025)
+RUN wget https://github.com/tModLoader/tModLoader/releases/download/${TMOD_VERSION}/tModLoader.Linux.Server.zip -O server.zip && \
+    unzip server.zip && rm server.zip
 
-# Puerto del servidor
+# Copiar archivos locales (mods, configs)
+COPY . .
+
+# Dar permisos de ejecución al script
+RUN chmod +x start.sh
+
+# Exponer el puerto del server
 EXPOSE 7777
 
-# Ejecuta
-CMD ["/start.sh"]
+# Comando de inicio
+CMD ["./start.sh"]

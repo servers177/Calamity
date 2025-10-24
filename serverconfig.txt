@@ -1,10 +1,10 @@
-# Config para v2025.08.3.1
-world=/config/worlds/MyCalamityWorld.wld
-worldname=Calamity Server 2025.08.3.1
+world=Worlds/MyWorld.wld
+autocreate=2
+difficulty=1
 maxplayers=8
 port=7777
-password=tucontraseña123
-motd=¡Servidor Calamity v2025.08.3.1 - ¡Únete!
-autocreate=3  # Crea mundo si no existe
-difficulty=3  # Expert/Revengence para Calamity
-language=es-MX  # Español si prefieres
+password=
+motd=Servidor de Terraria con mods en Render
+language=es
+worldpath=/tmodloader/Worlds
+modpath=/tmodloader/Mods
