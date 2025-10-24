@@ -1,9 +1,10 @@
-world=/server/worlds/MyWorld.wld
-worldname=My Modded World
+# Config para v2025.08.3.1
+world=/config/worlds/MyCalamityWorld.wld
+worldname=Calamity Server 2025.08.3.1
 maxplayers=8
 port=7777
 password=tucontraseña123
-motd=¡Bienvenidos al servidor moddeado!
-autocreate=3
-difficulty=3
-language=en-US
+motd=¡Servidor Calamity v2025.08.3.1 - ¡Únete!
+autocreate=3  # Crea mundo si no existe
+difficulty=3  # Expert/Revengence para Calamity
+language=es-MX  # Español si prefieres
